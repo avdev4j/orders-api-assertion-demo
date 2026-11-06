@@ -1,7 +1,8 @@
 {
   "info": {
     "name": "Orders API - helpful assertion message",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "6883a9ef-d5d9-4076-8041-88eab17f6a7e"
   },
   "variable": [
     {
@@ -41,7 +42,8 @@
             ]
           }
         }
-      ]
+      ],
+      "id": "89af92b2-ad98-4257-96bf-2efa39c522ec"
     }
   ]
 }

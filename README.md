@@ -34,5 +34,5 @@ Both pass on `main`.
 
 ## Notes
 
-- The workflow uses Newman so it runs with no secrets. A commented Postman CLI alternative is included.
+- The workflow runs the collections with the Postman CLI (`postman collection run`). It needs no secrets: without a `POSTMAN_API_KEY` login, run results stay in the job log instead of being uploaded to the Postman workspace.
 - One run per case: this is an illustration, not a benchmark.

@@ -1,7 +1,8 @@
 {
   "info": {
     "name": "Orders API - unhelpful assertion message",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "c3c14c9f-5dfd-478c-b382-6dd020c7ae74"
   },
   "variable": [
     {
@@ -38,7 +39,8 @@
             ]
           }
         }
-      ]
+      ],
+      "id": "86491fc5-0da8-42b5-8bf8-dc0869803a73"
     }
   ]
 }
