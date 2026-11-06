@@ -3,7 +3,7 @@ const http = require("node:http");
 
 const ORDERS = {
   ord_123: {
-    orderId: "ord_123",
+    id: "ord_123",
     customerId: "cus_456",
     status: "shipped",
     total: 42.5,
