@@ -1,0 +1,45 @@
+name: API contract tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  contract-tests:
+    name: contract tests (${{ matrix.variant }} message)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false # let both variants run, so both failures are visible on the PR
+      matrix:
+        variant: [unhelpful, helpful]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start the API
+        run: |
+          node src/server.js &
+          for i in $(seq 1 20); do
+            curl -sf http://localhost:3000/health && exit 0
+            sleep 0.5
+          done
+          echo "API did not start" && exit 1
+
+      - name: Run the Postman collection
+        run: >
+          npx newman run
+          collections/orders-${{ matrix.variant }}.postman_collection.json
+          --env-var baseUrl=http://localhost:3000
+
+      # Alternative with the Postman CLI (not tested here, adapt to your setup):
+      # - name: Install the Postman CLI
+      #   run: curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
+      # - name: Run the Postman collection
+      #   run: postman collection run collections/orders-${{ matrix.variant }}.postman_collection.json

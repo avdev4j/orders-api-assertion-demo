@@ -1,0 +1,44 @@
+{
+  "info": {
+    "name": "Orders API - unhelpful assertion message",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Get order",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/orders/ord_123",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "orders",
+            "ord_123"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Response has orderId\", function () {",
+              "  pm.expect(pm.response.json()).to.have.property(\"orderId\");",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

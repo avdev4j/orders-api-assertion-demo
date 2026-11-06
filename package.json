@@ -1,0 +1,17 @@
+{
+  "name": "orders-api-assertion-demo",
+  "version": "1.0.0",
+  "description": "Tiny Orders API used to show how assertion messages guide a coding agent fixing a failing CI.",
+  "private": true,
+  "scripts": {
+    "start": "node src/server.js",
+    "test:unhelpful": "newman run collections/orders-unhelpful.postman_collection.json --env-var baseUrl=http://localhost:3000",
+    "test:helpful": "newman run collections/orders-helpful.postman_collection.json --env-var baseUrl=http://localhost:3000"
+  },
+  "devDependencies": {
+    "newman": "^6.2.1"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

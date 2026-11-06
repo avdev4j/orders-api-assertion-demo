@@ -1,0 +1,47 @@
+{
+  "info": {
+    "name": "Orders API - helpful assertion message",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Get order",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/orders/ord_123",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "orders",
+            "ord_123"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"GET /orders/{id} returns 'orderId'\", function () {",
+              "  pm.expect(",
+              "    pm.response.json(),",
+              "    \"Response is missing 'orderId'. The OpenAPI spec defines it as a required string.\"",
+              "  ).to.have.property(\"orderId\");",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
