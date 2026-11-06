@@ -6,8 +6,8 @@ Two Postman collections run the **same request** with the **same assertion**. On
 
 | Collection | Test name | Message the agent reads |
 | --- | --- | --- |
-| `orders-unhelpful` | `Response has orderId` | `expected { id: 'ord_123', … } to have property 'orderId'` |
-| `orders-helpful` | `GET /orders/{id} returns 'orderId'` | `Response is missing 'orderId'. The OpenAPI spec defines it as a required string.` |
+| `orders-unhelpful` | `Response has orderId` | `expected { id: 'ord_123', …(4) } to have property 'orderId'` |
+| `orders-helpful` | `GET /orders/{id} returns 'orderId'` | `Response is missing 'orderId'. The OpenAPI spec defines it as a required string.: expected { id: 'ord_123', …(4) } to have property 'orderId'` (Chai appends its own message after the custom one) |
 
 `openapi.yaml` is the source of truth: `Order.orderId` is a required string.
 
