@@ -20,8 +20,10 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install the Postman CLI
+        run: |
+          curl -o- "https://dl-cli.pstmn.io/install/unix.sh" | sh
+          postman --version
 
       - name: Start the API
         run: |
@@ -32,14 +34,10 @@ jobs:
           done
           echo "API did not start" && exit 1
 
+      # Behavioral gate: the saved assertions must pass. The nonzero exit code
+      # is preserved so a failing assertion fails the job.
       - name: Run the Postman collection
         run: >
-          npx newman run
+          postman collection run
           collections/orders-${{ matrix.variant }}.postman_collection.json
           --env-var baseUrl=http://localhost:3000
-
-      # Alternative with the Postman CLI (not tested here, adapt to your setup):
-      # - name: Install the Postman CLI
-      #   run: curl -o- "https://dl-cli.pstmn.io/install/linux64.sh" | sh
-      # - name: Run the Postman collection
-      #   run: postman collection run collections/orders-${{ matrix.variant }}.postman_collection.json

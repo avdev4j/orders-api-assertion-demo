@@ -5,11 +5,8 @@
   "private": true,
   "scripts": {
     "start": "node src/server.js",
-    "test:unhelpful": "newman run collections/orders-unhelpful.postman_collection.json --env-var baseUrl=http://localhost:3000",
-    "test:helpful": "newman run collections/orders-helpful.postman_collection.json --env-var baseUrl=http://localhost:3000"
-  },
-  "devDependencies": {
-    "newman": "^6.2.1"
+    "test:unhelpful": "postman collection run collections/orders-unhelpful.postman_collection.json --env-var baseUrl=http://localhost:3000",
+    "test:helpful": "postman collection run collections/orders-helpful.postman_collection.json --env-var baseUrl=http://localhost:3000"
   },
   "engines": {
     "node": ">=18"

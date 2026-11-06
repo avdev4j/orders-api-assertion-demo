@@ -1,0 +1,15 @@
+cloudResources:
+  collections:
+    ../collections/orders-helpful.postman_collection.json: 56226622-d09b5cc9-a48d-473d-a28e-b9bd4a354178
+    ../collections/orders-unhelpful.postman_collection.json: 56226622-0e4ab395-fea2-4e74-bc92-7c7402feec6d
+  specs:
+    ../openapi.yaml: bb5b83a4-9610-4a24-abf2-e3755585cc24
+localResources:
+  collections:
+    - ../collections/orders-helpful.postman_collection.json
+    - ../collections/orders-unhelpful.postman_collection.json
+  specs:
+    - ../openapi.yaml
+workspace:
+  id: 7c00a947-d582-4442-a8f1-52ddda706d9b
+  name: avdev4j/orders-api-assertion-demo
